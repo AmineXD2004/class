@@ -1,34 +1,43 @@
 // FILTRO
+// FILTROS
 const buttons = document.querySelectorAll('.filter');
-const heroes = document.querySelectorAll('.hero');
+const characters = document.querySelectorAll('.character');
 
-buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-
-        buttons.forEach(b => b.classList.remove('active'));
+buttons.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+        buttons.forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
 
         const filter = btn.dataset.filter;
 
-        heroes.forEach(h => {
-            if(filter === 'all' || h.classList.contains(filter)){
-                h.style.display = 'block';
+        characters.forEach(char=>{
+            if(filter === 'all' || char.classList.contains(filter)){
+                char.style.display = 'block';
             } else {
-                h.style.display = 'none';
+                char.style.display = 'none';
             }
         });
     });
 });
 
-// ANIMACIÓN AL HACER SCROLL
-const cards = document.querySelectorAll('.card');
+// MODAL
+const modal = document.getElementById('modal');
+const modalTitle = document.getElementById('modal-title');
+const modalText = document.getElementById('modal-text');
+const closeBtn = document.querySelector('.close');
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if(entry.isIntersecting){
-            entry.target.classList.add('show');
-        }
+characters.forEach(char=>{
+    char.addEventListener('click', ()=>{
+        modal.style.display = 'flex';
+        modalTitle.textContent = char.dataset.name;
+        modalText.textContent = char.dataset.info;
     });
 });
 
-cards.forEach(card => observer.observe(card));
+closeBtn.onclick = ()=> modal.style.display = 'none';
+
+window.onclick = (e)=>{
+    if(e.target === modal){
+        modal.style.display = 'none';
+    }
+};
