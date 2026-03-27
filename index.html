@@ -3,51 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Marvel Rivals | Fanpage Pro</title>
+<title>Marvel Rivals | Experto</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header class="header">
-    <div class="navbar">
-        <div class="logo">MARVEL RIVALS</div>
+    <nav class="navbar container">
+        <h1 class="logo">MARVEL RIVALS</h1>
         <ul class="nav-links">
-            <li><a href="#news">Noticias</a></li>
             <li><a href="#heroes">Héroes</a></li>
+            <li><a href="#teamups">Team-Ups</a></li>
         </ul>
-    </div>
+    </nav>
 </header>
 
+<main>
+
 <section class="hero">
-    <div class="hero-box">
-        <h1>SEASON 7</h1>
-        <p>THE HUNT IS ON</p>
-        <a href="#heroes" class="btn">Ver héroes</a>
+    <div class="hero-content">
+        <h2>SEASON 7</h2>
+        <p>The Hunt Is On</p>
     </div>
 </section>
 
-<section id="news">
-<h2 class="title">Noticias</h2>
-<div class="grid">
-
-<div class="card">
-<img src="https://sm.ign.com/t/ign_latam/screenshot/default/marvel-rivals-white-fox_r7sm.1200.jpg">
-<h3>White Fox llega</h3>
-<p>Nueva estratega con habilidades de ilusión</p>
-</div>
-
-<div class="card">
-<img src="https://cdn.marvel.com/content/1x/deadpool_0.jpg">
-<h3>Evento Deadpool</h3>
-<p>Consigue recompensas gratis</p>
-</div>
-
-</div>
-</section>
-
-<section id="heroes">
-<h2 class="title">Héroes</h2>
+<section id="heroes" class="container">
+<h2 class="section-title">Héroes</h2>
 
 <div class="filters">
 <button class="filter active" data-filter="all">Todos</button>
@@ -57,22 +39,22 @@
 
 <div class="grid">
 
-<div class="card hero duelista">
+<div class="card character duelista" data-name="Iron Man" data-info="Genio multimillonario con armadura avanzada. Especialista en combate aéreo.">
 <img src="https://cdn.marvel.com/content/1x/ironman_lob_crd_01_10.jpg">
 <h3>Iron Man</h3>
 </div>
 
-<div class="card hero duelista">
-<img src="https://cdn.marvel.com/content/1x/gambit_lob_crd_01.jpg">
-<h3>Gambit</h3>
-</div>
-
-<div class="card hero mago">
+<div class="card character mago" data-name="Doctor Strange" data-info="Hechicero supremo con control del tiempo y dimensiones.">
 <img src="https://cdn.marvel.com/content/1x/drstrange_lob_crd_01.jpg">
 <h3>Doctor Strange</h3>
 </div>
 
-<div class="card hero mago">
+<div class="card character duelista" data-name="Gambit" data-info="Mutante que manipula energía cinética con cartas explosivas.">
+<img src="https://cdn.marvel.com/content/1x/gambit_lob_crd_01.jpg">
+<h3>Gambit</h3>
+</div>
+
+<div class="card character mago" data-name="Loki" data-info="Dios del engaño con ilusiones y manipulación mental.">
 <img src="https://cdn.marvel.com/content/1x/loki_lob_crd_01.jpg">
 <h3>Loki</h3>
 </div>
@@ -80,9 +62,16 @@
 </div>
 </section>
 
-<footer class="footer">
-<p>Proyecto Web Profesional - Marvel Rivals</p>
-</footer>
+</main>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title"></h2>
+        <p id="modal-text"></p>
+    </div>
+</div>
 
 <script src="script.js"></script>
 </body>
