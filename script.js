@@ -1,29 +1,34 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const heroCards = document.querySelectorAll('.hero-card');
+// FILTRO
+const buttons = document.querySelectorAll('.filter');
+const heroes = document.querySelectorAll('.hero');
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Manejo de botones activos
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
+buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
 
-            const filterValue = button.getAttribute('data-filter');
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
 
-            heroCards.forEach(card => {
-                // Quitamos la animación para resetearla
-                card.classList.remove('fade-in');
-                
-                if (filterValue === 'all' || card.classList.contains(filterValue)) {
-                    card.style.display = 'flex';
-                    // Forzamos un pequeño delay para que la animación se vea bien
-                    setTimeout(() => {
-                        card.classList.add('fade-in');
-                    }, 10);
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+        const filter = btn.dataset.filter;
+
+        heroes.forEach(h => {
+            if(filter === 'all' || h.classList.contains(filter)){
+                h.style.display = 'block';
+            } else {
+                h.style.display = 'none';
+            }
         });
     });
 });
+
+// ANIMACIÓN AL HACER SCROLL
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if(entry.isIntersecting){
+            entry.target.classList.add('show');
+        }
+    });
+});
+
+cards.forEach(card => observer.observe(card));
